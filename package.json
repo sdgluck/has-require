@@ -1,6 +1,6 @@
 {
   "name": "has-require-or-import",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Check if code requires/imports any module or a specific id",
   "main": "index.js",
   "scripts": {

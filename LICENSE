@@ -1,6 +1,10 @@
 The MIT License (MIT)
 
+Majority of code:
 Copyright (c) 2015 Ben Drucker
+
+Modifications to add checks for import statements:
+Copyright (c) 2017 Sam Gluck
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

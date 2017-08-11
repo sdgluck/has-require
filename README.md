@@ -2,7 +2,7 @@
 
 > Check if code requires/imports any module or a specific id
 
-A fork `has-require` of by [Ben Drucker](http://bendrucker.me). (Thanks Ben!)
+A fork of `has-require` by [Ben Drucker](http://bendrucker.me). (Thanks Ben!)
 
 ## Installing
 
@@ -82,4 +82,8 @@ Uses `checker.any()` first, so calling `has` for multiple ids when no `require` 
 
 ## License
 
+Bulk of the program:<br/>
+MIT © [Ben Drucker](http://bendrucker.me)
+
+Small modifications to check for import statements:<br/>
 MIT © [Sam Gluck](github.com/sdgluck)
