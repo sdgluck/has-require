@@ -1,18 +1,21 @@
-# has-require [![Build Status](https://travis-ci.org/bendrucker/has-require.svg?branch=master)](https://travis-ci.org/bendrucker/has-require)
+# has-require-or-import
 
-> Check if code requires any module or a specific id
+> Check if code requires/imports any module or a specific id
+
+A fork `has-require` of by [Ben Drucker](http://bendrucker.me). (Thanks Ben!)
 
 ## Installing
 
 ```bash
-$ npm install --save has-require
+$ npm install --save has-require-or-import
 ```
 
 ## Usage
 
 ```js
-var hasRequire = require('has-require')
+var hasRequire = require('has-require-or-import')
 hasRequire('require("foo")', 'foo') // => true
+hasRequire('import foo from "bar"', 'bar') // => true
 hasRequire.any('require') // => false
 ```
 
@@ -79,4 +82,4 @@ Uses `checker.any()` first, so calling `has` for multiple ids when no `require` 
 
 ## License
 
-MIT © [Ben Drucker](http://bendrucker.me)
+MIT © [Sam Gluck](github.com/sdgluck)

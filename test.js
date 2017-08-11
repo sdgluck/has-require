@@ -3,9 +3,12 @@
 var test = require('tape')
 var hasRequire = require('./')
 
-test(function (t) {
+test('validation', function (t) {
   t.throws(hasRequire.bind(null, 'code'), /id is required/)
+  t.end()
+})
 
+test('require', function (t) {
   t.ok(hasRequire("require('foo')", 'foo'), 'single quotes')
   t.ok(hasRequire('require("foo")', 'foo'), 'double quotes')
   t.ok(hasRequire('require( "foo" )', 'foo'), 'whitespace')
@@ -26,6 +29,32 @@ test(function (t) {
   t.notOk(hasRequire.any('require(identifier)'), 'literal')
   t.notOk(hasRequire.any('require("")'), 'empty string')
   t.notOk(hasRequire.any('require("bendrucker@pkg")'), 'invalid @ sign')
+
+  t.end()
+})
+
+test('import', function (t) {
+  t.throws(hasRequire.bind(null, 'code'), /id is required/)
+
+  t.ok(hasRequire("from 'foo'", 'foo'), 'single quotes')
+  t.ok(hasRequire('from "foo"', 'foo'), 'double quotes')
+  t.ok(hasRequire('from  "foo"  ', 'foo'), 'whitespace')
+  t.notOk(hasRequire('from "foo"', 'bar'), 'match id')
+
+  t.ok(hasRequire('from "foo/bar"', 'foo/bar'), 'slash')
+  t.ok(hasRequire('from "./foo/bar"', './foo/bar'), 'dot slash')
+
+  t.ok(hasRequire.any('from "foo"'), 'normal')
+  t.ok(hasRequire.any('from "foo-bar"'), 'dash')
+  t.ok(hasRequire.any('from "foo_bar"'), 'underscore')
+  t.ok(hasRequire.any('from "foo2"'), 'number')
+  t.ok(hasRequire.any('from "foo.bar"'), 'dot')
+  t.ok(hasRequire.any('from "@spongebob/squarepants"'), 'scoped')
+
+  t.notOk(hasRequire.any('from'), 'no call')
+  t.notOk(hasRequire.any('from identifier'), 'literal')
+  t.notOk(hasRequire.any('from ""'), 'empty string')
+  t.notOk(hasRequire.any('from "spongebob@squarepants")'), 'invalid @ sign')
 
   t.end()
 })

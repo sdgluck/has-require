@@ -18,24 +18,40 @@ function RequireChecker (code) {
   this.code = code
 }
 
-var anyRegExp = createRegExp('@?[A-Za-z0-9/_.-]+')
+var anyRequireRegExp = createRequireRegExp('@?[A-Za-z0-9/_.-]+')
+var anyImportRegExp = createImportRegExp('@?[A-Za-z0-9/_.-]+')
 RequireChecker.prototype.any = function anyRequire () {
   if (this._any != null) return this._any
-  this._any = anyRegExp.test(this.code)
+  this._any = (
+    anyRequireRegExp.test(this.code) ||
+    anyImportRegExp.test(this.code)
+  )
   return this._any
 }
 
 RequireChecker.prototype.has = function has (id) {
   if (!id) throw new Error('module id is required')
-  return this.any() && createRegExp(escape(id)).test(this.code)
+  return this.any() && (
+      createRequireRegExp(escape(id)).test(this.code) ||
+    createImportRegExp(escape(id)).test(this.code)
+  )
 }
 
-function createRegExp (input) {
+function createRequireRegExp (input) {
   return new RegExp([
     escape('require('),
     '\\s*[\'"]',
     input,
     '[\'"]\\s*',
     escape(')')
+  ].join(''))
+}
+
+function createImportRegExp (input) {
+  return new RegExp([
+    'from',
+    '\\s+[\'"]',
+    input,
+    '[\'"]\\s*'
   ].join(''))
 }

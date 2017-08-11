@@ -1,25 +1,25 @@
 {
-  "name": "has-require",
-  "version": "1.2.2",
-  "description": "Check if code requires any module or a specific id",
+  "name": "has-require-or-import",
+  "version": "0.0.1",
+  "description": "Check if code requires/imports any module or a specific id",
   "main": "index.js",
   "scripts": {
     "test": "standard && tape test.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bendrucker/has-require.git"
+    "url": "https://github.com/sdgluck/has-require-or-import.git"
   },
   "keywords": [
     "require",
     "browserify"
   ],
-  "author": "Ben Drucker <bvdrucker@gmail.com> (http://bendrucker.me)",
+  "author": "Ben Drucker <bvdrucker@gmail.com> (http://bendrucker.me), Sam Gluck <sdgluck@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bendrucker/has-require/issues"
+    "url": "https://github.com/sdgluck/has-require-or-import/issues"
   },
-  "homepage": "https://github.com/bendrucker/has-require",
+  "homepage": "https://github.com/sdgluck/has-require-or-import",
   "devDependencies": {
     "standard": "^4.0.1",
     "tape": "^4.0.0"
